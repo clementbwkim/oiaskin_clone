@@ -22,12 +22,11 @@ function init () {
   defaultSelect();
   changeBgColor();
   showNavigation();
+  handleLogo ();
 }
 
+
 function initEvents () {
-  if (window.width < 900) {
-    window.addEventListener('scroll', handleLogo);
-  }
   selectBoxEl.addEventListener('click',toggleSelectBox);
   bodyEl.addEventListener('click',hideSelectBox);
 }
@@ -67,6 +66,13 @@ function handleLogo () {
   let calcScaleX = scaleX - (scaleX / scrollMax * window.pageYOffset);
   let calcScaleY = scaleY - (scaleY / scrollMax * window.pageYOffset);
   logoEl.style.transform = `matrix(${calcScaleX > 0.7 ? calcScaleX : 0.7}, 0,0,${calcScaleY  > 0.7 ? calcScaleY : 0.7},1,0)`;
+
+  if (window.innerWidth > 900) {
+    window.addEventListener('scroll', handleLogo);
+  }else {
+    window.removeEventListener('scroll', handleLogo);
+    logoEl.style.transform = `scale(0.6) translate(-60%,-90%)`;
+  }
 }
 
 function toggleSelectBox(e){

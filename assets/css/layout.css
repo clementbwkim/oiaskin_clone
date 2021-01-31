@@ -404,7 +404,6 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: scale(0.6) translate(-60%,-90%);
   }
 
   .header .nav-items{
